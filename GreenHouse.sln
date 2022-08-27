@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenHouse.UI", "GreenHouse.UI\GreenHouse.UI.csproj", "{08FA6BFE-177F-4F0D-9E1D-44AB79A39435}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenHouse.Common", "GreenHouse.Common\GreenHouse.Common.csproj", "{B6AE7CF3-3897-4331-9CB2-C71D35499DB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenHouse.Dal", "GreenHouse.Dal\GreenHouse.Dal.csproj", "{49B51E36-0D3B-43D9-8CEC-50047BDA2CC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenHouse.Core", "GreenHouse.Core\GreenHouse.Core.csproj", "{2A733D0D-CD12-4ADC-AFB3-BF912642B5E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenHouse.Logs", "GreenHouse.Logs\GreenHouse.Logs.csproj", "{E215FE69-16EF-4D30-8BD9-4D0BD8F1F1D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenHouse.Dto", "GreenHouse.Dto\GreenHouse.Dto.csproj", "{251FCDF3-E2C6-432D-92DA-64B1E08835D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08FA6BFE-177F-4F0D-9E1D-44AB79A39435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08FA6BFE-177F-4F0D-9E1D-44AB79A39435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08FA6BFE-177F-4F0D-9E1D-44AB79A39435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08FA6BFE-177F-4F0D-9E1D-44AB79A39435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6AE7CF3-3897-4331-9CB2-C71D35499DB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6AE7CF3-3897-4331-9CB2-C71D35499DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6AE7CF3-3897-4331-9CB2-C71D35499DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6AE7CF3-3897-4331-9CB2-C71D35499DB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49B51E36-0D3B-43D9-8CEC-50047BDA2CC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49B51E36-0D3B-43D9-8CEC-50047BDA2CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49B51E36-0D3B-43D9-8CEC-50047BDA2CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49B51E36-0D3B-43D9-8CEC-50047BDA2CC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A733D0D-CD12-4ADC-AFB3-BF912642B5E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A733D0D-CD12-4ADC-AFB3-BF912642B5E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A733D0D-CD12-4ADC-AFB3-BF912642B5E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A733D0D-CD12-4ADC-AFB3-BF912642B5E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E215FE69-16EF-4D30-8BD9-4D0BD8F1F1D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E215FE69-16EF-4D30-8BD9-4D0BD8F1F1D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E215FE69-16EF-4D30-8BD9-4D0BD8F1F1D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E215FE69-16EF-4D30-8BD9-4D0BD8F1F1D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{251FCDF3-E2C6-432D-92DA-64B1E08835D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{251FCDF3-E2C6-432D-92DA-64B1E08835D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{251FCDF3-E2C6-432D-92DA-64B1E08835D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{251FCDF3-E2C6-432D-92DA-64B1E08835D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75004DBF-5A8A-4A78-B602-E4F2DF8AF4F8}
+	EndGlobalSection
+EndGlobal
