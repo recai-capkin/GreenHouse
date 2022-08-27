@@ -9,6 +9,6 @@ namespace GreenHouse.Dal.Abstract.Interface
 {
     public interface IUserDal:IGenericRepository<User>
     {
-
+        User Login(string username, string password);
     }
 }

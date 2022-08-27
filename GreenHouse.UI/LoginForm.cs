@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GreenHouse.Core;
+using GreenHouse.Dal.Concrete;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,9 +21,25 @@ namespace GreenHouse.UI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            MainForm mainForm = new MainForm();
-            mainForm.Show();
-            this.Hide();
+            UserDal userDal = new UserDal();
+            User kullanici = userDal.Login(textBox1.Text,textBox2.Text);
+            if (kullanici == null)
+            {
+                MessageBox.Show("Böyle bir kullanıcı yok");
+            }
+            else if (kullanici.UserRole.UserRoleName.ToLower() == "standartuser" || kullanici.UserRole.UserRoleName.ToLower() == "premiumuser")
+            {
+                MainForm mainForm = new MainForm();
+                mainForm.Show();
+                this.Hide();
+            }
+            else if(kullanici.UserRole.UserRoleName.ToLower() == "admin")
+            {
+                MainForm mainForm = new MainForm();
+                mainForm.Show();
+                this.Hide();
+            }
+            
         }
     }
 }

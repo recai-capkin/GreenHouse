@@ -1,4 +1,6 @@
-﻿using GreenHouse.Dal.Concrete;
+﻿using GreenHouse.Core;
+using GreenHouse.Dal;
+using GreenHouse.Dal.Concrete;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +15,14 @@ namespace GreenHouse.UI
 {
     public partial class SearchProduct : Form
     {
+        User _user;
         public SearchProduct()
         {
             InitializeComponent();
+        }
+        public SearchProduct(User user):base()
+        {
+            _user = user;
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -31,6 +38,7 @@ namespace GreenHouse.UI
 
         private void btnHome_Click(object sender, EventArgs e)
         {
+            
             MainForm mainForm = new MainForm();
             mainForm.Show();
             this.Hide();
@@ -45,10 +53,12 @@ namespace GreenHouse.UI
             }
             
         }
-
+       
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var data = listBox1.SelectedItem;
+            Product data = (Product)listBox1.SelectedItem;
+            ProductDetailPage productDetailPage = new ProductDetailPage(data, _user);
+            productDetailPage.Show();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GreenHouse.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,14 @@ namespace GreenHouse.UI
 {
     public partial class MainForm : Form
     {
+        User _user;
         public MainForm()
         {
             InitializeComponent();
+        }
+        public MainForm(User user):base()
+        {
+            _user = user;
         }
 
         private void btnAddProductOrUpdate_Click(object sender, EventArgs e)
