@@ -11,15 +11,12 @@ using System.Threading.Tasks;
 
 namespace GreenHouse.Dal.Concrete
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T, TContext> : IGenericRepository<T> 
+        where T : class, new()
+        where TContext : DbContext, new()
     {
-        private readonly GreenHouseContext greenHouseContext = null;
-        private readonly DbSet<T> tablo = null;
-        public GenericRepository()
-        {
-            greenHouseContext = new GreenHouseContext();
-            tablo = greenHouseContext.Set<T>();
-        }
+
+       
         public bool Add(T data)
         {
             JsonLogger<LogDto> jsonLogger = new JsonLogger<LogDto>("MyLog");
@@ -42,12 +39,20 @@ namespace GreenHouse.Dal.Concrete
 
         public List<T> GetAll()
         {
-            throw new NotImplementedException();
+            using (TContext context = new TContext())
+            {
+                return context.Set<T>().ToList();
+            }
         }
 
-        public List<T> GetAllByFilter(System.Linq.Expressions.Expression<Func<T, bool>> expression)
+        public List<T> GetAllByFilter(System.Linq.Expressions.Expression<Func<T, bool>> expression = null)
         {
-            throw new NotImplementedException();
+            using (TContext context = new TContext())
+            {
+                return expression == null
+                    ? context.Set<T>().ToList()
+                    : context.Set<T>().Where(expression).ToList();
+            }
         }
 
         public T GetT(int id)

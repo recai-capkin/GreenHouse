@@ -16,7 +16,7 @@ namespace GreenHouse.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FirstScreen());
+            Application.Run(new LoginForm());
         }
     }
 }

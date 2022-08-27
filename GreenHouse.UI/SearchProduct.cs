@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GreenHouse.Dal.Concrete;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,6 +34,21 @@ namespace GreenHouse.UI
             MainForm mainForm = new MainForm();
             mainForm.Show();
             this.Hide();
+        }
+
+        private void SearchProduct_Load(object sender, EventArgs e)
+        {
+            ProductDal productDal = new ProductDal();
+            foreach (var item in productDal.ProductGetAllWithDetail())
+            {
+                listBox1.Items.Add(item);
+            }
+            
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var data = listBox1.SelectedItem;
         }
     }
 }

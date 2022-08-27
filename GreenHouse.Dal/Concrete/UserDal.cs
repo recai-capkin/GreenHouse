@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GreenHouse.Dal.Concrete
 {
-    public class UserDal : GenericRepository<User>, IUserDal
+    public class UserDal : GenericRepository<User,GreenHouseContext>, IUserDal
     {
         
     }
