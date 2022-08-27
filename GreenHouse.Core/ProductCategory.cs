@@ -31,5 +31,9 @@ namespace GreenHouse.Core
         public virtual ICollection<ProductCategory> ProductCategory1 { get; set; }
 
         public virtual ProductCategory ProductCategory2 { get; set; }
+        public override string ToString()
+        {
+            return CategoryName;
+        }
     }
 }

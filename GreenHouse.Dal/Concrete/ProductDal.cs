@@ -47,5 +47,88 @@ namespace GreenHouse.Dal.Concrete
             }
         }
 
+        public List<ProductProducer> ProducerGetAll()
+        {
+            try
+            {
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    var content = greenHouseContext.ProductProducers.ToList();
+                    return content;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public List<ProductCategory> CategoryGetAll()
+        {
+            try
+            {
+                using(GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    var content = greenHouseContext.ProductCategories.ToList();
+                    return content;
+                }
+                    
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool BarkodControl(string barkod)
+        {
+            try
+            {
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    var deger = greenHouseContext.Products.Any(x => x.Barkod == barkod);
+                    return deger;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public  Product GetProductDetailWithBarkod(string barkod)
+        {
+            try
+            {
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    var deger = greenHouseContext.Products.Include("ProductBrand").Include("ProductCategory").Include("ProductProducer").Where(x => x.Barkod == barkod).FirstOrDefault();
+                    return deger;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public ProductCategory TopCategory(int? id)
+        {
+            try
+            {
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    var deger = greenHouseContext.ProductCategories.Where(x => x.CategoryId == id ).FirstOrDefault();
+                    var deger2 = greenHouseContext.ProductCategories.Where(x => x.CategoryId == deger.TopCategory && x.TopCategory == deger.TopCategory).FirstOrDefault();
+                    return deger2;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }
