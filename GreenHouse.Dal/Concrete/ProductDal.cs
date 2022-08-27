@@ -30,5 +30,22 @@ namespace GreenHouse.Dal.Concrete
             }
             
         }
+        public List<ProductContent> ProductGetAllContent(int id)
+        {
+            try
+            {
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    var content = greenHouseContext.ProductContents.Where(x => x.ProductId == id).ToList();
+                    return content;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }

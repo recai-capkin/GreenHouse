@@ -50,12 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="GreenHouseContext.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductBrand.cs" />
     <Compile Include="ProductCategory.cs" />
+    <Compile Include="ProductContent.cs" />
     <Compile Include="ProductProducer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sysdiagram.cs" />

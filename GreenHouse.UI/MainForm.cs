@@ -21,6 +21,7 @@ namespace GreenHouse.UI
         public MainForm(User user):base()
         {
             _user = user;
+            InitializeComponent();
         }
 
         private void btnAddProductOrUpdate_Click(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace GreenHouse.UI
 
         private void btnArama_Click(object sender, EventArgs e)
         {
-            SearchProduct searchProduct = new SearchProduct();
+            SearchProduct searchProduct = new SearchProduct(_user);
             searchProduct.Show();
             this.Hide();
         }

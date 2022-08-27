@@ -23,6 +23,7 @@ namespace GreenHouse.UI
         public SearchProduct(User user):base()
         {
             _user = user;
+            InitializeComponent();
         }
 
         private void tabPage2_Click(object sender, EventArgs e)

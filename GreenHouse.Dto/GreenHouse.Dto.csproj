@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LogDto.cs" />
+    <Compile Include="ProductContentDto.cs" />
     <Compile Include="ProductDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

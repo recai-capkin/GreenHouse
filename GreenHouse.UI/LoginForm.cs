@@ -29,13 +29,13 @@ namespace GreenHouse.UI
             }
             else if (kullanici.UserRole.UserRoleName.ToLower() == "standartuser" || kullanici.UserRole.UserRoleName.ToLower() == "premiumuser")
             {
-                MainForm mainForm = new MainForm();
+                MainForm mainForm = new MainForm(kullanici);
                 mainForm.Show();
                 this.Hide();
             }
             else if(kullanici.UserRole.UserRoleName.ToLower() == "admin")
             {
-                MainForm mainForm = new MainForm();
+                MainForm mainForm = new MainForm(kullanici);
                 mainForm.Show();
                 this.Hide();
             }
