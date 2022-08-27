@@ -1,5 +1,6 @@
 ﻿using GreenHouse.Core;
 using GreenHouse.Dal.Concrete;
+using GreenHouse.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,12 +20,14 @@ namespace GreenHouse.Dal
         public ProductDetailPage()
         {
             InitializeComponent();
+            
         }
         public ProductDetailPage(Product product,User user):base()
         {
             _product = product;
             _user = user;
             InitializeComponent();
+            label17.Visible = false;    
         }
 
         private void ProductDetailPage_Load(object sender, EventArgs e)
@@ -34,12 +37,85 @@ namespace GreenHouse.Dal
             label18.Text = _product.ProductName;
 
             ProductDal productDal = new ProductDal();
-            int 
+            List<ProductContent> blackListContent = new List<ProductContent>();
+            List<ProductContent> temizContent = new List<ProductContent>();
+            List<ProductContent> ortaContent = new List<ProductContent>();
+            List<ProductContent> riskliContent = new List<ProductContent>();
+            List<ProductContent> azContent = new List<ProductContent>();
+            int riskli = 0;
+            int temiz = 0;
+            int orta = 0;
+            int az = 0;
+            int blackList = 0;
             foreach (var item in productDal.ProductGetAllContent(_product.ProductId))
             {
-                listBox1.Items.Add(item.ContentName);
+                if (item.ContentThreadLevel == "Riskli")
+                {
+                    listBox1.Items.Add(item);
+                    riskliContent.Add(item);
+                }
+                else if (item.ContentThreadLevel == "Temiz")
+                {
+                    listBox1.Items.Add(item);
+                    temizContent.Add(item);
+                }
+                else if (item.ContentThreadLevel == "Orta Riskli")
+                {
+                    listBox1.Items.Add(item);
+                    ortaContent.Add(item);
+                }
+                else if (item.ContentThreadLevel == "Az Riskli")
+                {
+                    listBox1.Items.Add(item);
+                    azContent.Add(item);
+                }   
             }
-            label10.Text = "";
+            UserDal userDal = new UserDal();
+            var userallergen = userDal.GetUserAllergen(_user.UserId);
+            foreach (var item in productDal.ProductGetAllContent(_product.ProductId))
+            {
+                if (userallergen.Any(x => x.AllergenContentName == item.ContentName))
+                {
+                    blackList++;
+                    blackListContent.Add(item);
+                }
+            }
+
+            label10.Text = blackListContent.Count.ToString();
+            label11.Text = riskliContent.Count.ToString();
+            label12.Text = ortaContent.Count.ToString();
+            label13.Text = azContent.Count.ToString();
+            label14.Text = temizContent.Count.ToString();
+            label23.Text = userDal.GetUserName(_product.UserId); 
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ProductContent data = (ProductContent)listBox1.SelectedItem;
+            label21.Text = data.ContentName;
+            textBox1.Text = data.ContentDescription;
+            UserDal userDal = new UserDal();
+            var userallergen = userDal.GetUserAllergen(_user.UserId);
+            foreach (var item in userallergen)
+            {
+                if (item.AllergenContentName == data.ContentName)
+                {
+                    label17.Visible = true;
+                    break;
+                }
+                else
+                {
+                    label17.Visible = false;
+                }
+            }
+            
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm(_user);
+            mainForm.ShowDialog();
+            this.Hide();
         }
     }
 }

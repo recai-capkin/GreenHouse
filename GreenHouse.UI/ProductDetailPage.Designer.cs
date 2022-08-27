@@ -55,6 +55,9 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +108,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
             this.label5.Location = new System.Drawing.Point(279, 174);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 13);
@@ -114,6 +118,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label6.Location = new System.Drawing.Point(279, 209);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 13);
@@ -123,6 +128,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Yellow;
             this.label7.Location = new System.Drawing.Point(279, 243);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 13);
@@ -132,6 +138,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Lime;
             this.label8.Location = new System.Drawing.Point(279, 280);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(103, 13);
@@ -143,9 +150,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(279, 321);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(235, 13);
+            this.label9.Size = new System.Drawing.Size(101, 13);
             this.label9.TabIndex = 9;
-            this.label9.Text = "Görüntülenen ürün --user-- tarafından eklenmiştir.";
+            this.label9.Text = "Görüntülenen ürün  ";
             // 
             // listBox1
             // 
@@ -154,6 +161,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(232, 134);
             this.listBox1.TabIndex = 10;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -167,6 +175,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Red;
             this.label11.Location = new System.Drawing.Point(426, 174);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(16, 13);
@@ -176,6 +185,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label12.Location = new System.Drawing.Point(426, 209);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(16, 13);
@@ -185,6 +195,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Yellow;
             this.label13.Location = new System.Drawing.Point(426, 243);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(16, 13);
@@ -194,6 +205,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Lime;
             this.label14.Location = new System.Drawing.Point(426, 280);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(16, 13);
@@ -238,6 +250,7 @@
             this.btnHome.Size = new System.Drawing.Size(72, 69);
             this.btnHome.TabIndex = 19;
             this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // label16
             // 
@@ -253,9 +266,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(282, 559);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(120, 13);
+            this.label17.Size = new System.Drawing.Size(143, 13);
             this.label17.TabIndex = 21;
-            this.label17.Text = "Seçilen İçerik Black List";
+            this.label17.Text = "Seçilen İçerik Black Listtedir.";
             // 
             // textBox1
             // 
@@ -293,11 +306,41 @@
             this.label20.TabIndex = 25;
             this.label20.Text = "---";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(359, 534);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(16, 13);
+            this.label21.TabIndex = 26;
+            this.label21.Text = "---";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(461, 321);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(109, 13);
+            this.label22.TabIndex = 27;
+            this.label22.Text = "tarafından eklenmiştir.";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(402, 321);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(22, 13);
+            this.label23.TabIndex = 28;
+            this.label23.Text = "-----";
+            // 
             // ProductDetailPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 731);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
@@ -361,5 +404,8 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
     }
 }

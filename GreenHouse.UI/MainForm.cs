@@ -26,7 +26,7 @@ namespace GreenHouse.UI
 
         private void btnAddProductOrUpdate_Click(object sender, EventArgs e)
         {
-            AddProduct addProduct = new AddProduct();
+            AddProduct addProduct = new AddProduct(_user);
             addProduct.Show();
             this.Hide();
         }

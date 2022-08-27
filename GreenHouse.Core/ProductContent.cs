@@ -15,6 +15,10 @@ namespace GreenHouse.Core
         public string ContentName { get; set; }
         public string ContentThreadLevel { get; set; }
         public string ContentDescription { get; set; }
+        public override string ToString()
+        {
+            return ContentName;
+        }
 
     }
 }

@@ -19,5 +19,21 @@ namespace GreenHouse.Dal.Concrete
                 return user;
             }
         }
+        public List<UserAllergen> GetUserAllergen(int id)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                var allergen = greenHouseContext.UserAllergens.Where(x => x.UserId == id).ToList();
+                return allergen;
+            }
+        }
+        public string GetUserName(int? id)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                var username = greenHouseContext.Users.Where(x => x.UserId == id).SingleOrDefault();
+                return username.Name+username.Surname;
+            }
+        }
     }
 }
