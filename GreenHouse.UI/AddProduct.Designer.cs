@@ -50,21 +50,18 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -211,16 +208,16 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(125, 230);
+            this.textBox5.Location = new System.Drawing.Point(128, 280);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(436, 149);
+            this.textBox5.Size = new System.Drawing.Size(436, 124);
             this.textBox5.TabIndex = 16;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 233);
+            this.label6.Location = new System.Drawing.Point(40, 280);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 13);
             this.label6.TabIndex = 17;
@@ -229,7 +226,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(125, 385);
+            this.checkBox1.Location = new System.Drawing.Point(125, 410);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(379, 17);
             this.checkBox1.TabIndex = 18;
@@ -239,7 +236,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(35, 411);
+            this.label7.Location = new System.Drawing.Point(35, 433);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(84, 13);
             this.label7.TabIndex = 20;
@@ -247,16 +244,15 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(125, 408);
+            this.textBox6.Location = new System.Drawing.Point(125, 433);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(436, 149);
+            this.textBox6.Size = new System.Drawing.Size(436, 124);
             this.textBox6.TabIndex = 19;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(90, 82);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -265,7 +261,11 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.pictureBox1);
+            this.tabPage1.Controls.Add(this.label13);
+            this.tabPage1.Controls.Add(this.label12);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.textBox2);
             this.tabPage1.Controls.Add(this.comboBox3);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.comboBox2);
@@ -293,53 +293,6 @@
             this.tabPage1.Text = "Ürün Ekle";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.listBox1);
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.textBox7);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(711, 881);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Ürün Ara";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(59, 51);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Barkod No";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(149, 48);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(436, 20);
-            this.textBox7.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(149, 106);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(436, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Ara";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(149, 163);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(436, 303);
-            this.listBox1.TabIndex = 6;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -347,10 +300,6 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "AAAA",
-            "SSSS",
-            "EEEE"});
             this.comboBox1.Location = new System.Drawing.Point(130, 151);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(436, 21);
@@ -367,10 +316,6 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "AAAA",
-            "SSSS",
-            "EEEE"});
             this.comboBox3.Location = new System.Drawing.Point(130, 194);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(436, 21);
@@ -385,13 +330,48 @@
             this.label9.TabIndex = 24;
             this.label9.Text = "Alt Kategori";
             // 
-            // pictureBox1
+            // label10
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(567, 568);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 73);
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(40, 238);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 13);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Marka";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(130, 235);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(436, 20);
+            this.textBox2.TabIndex = 26;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(567, 598);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(42, 13);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "Eklendi";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(567, 690);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(42, 13);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "Eklendi";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(77, 690);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(42, 13);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "Eklendi";
             // 
             // AddProduct
             // 
@@ -409,9 +389,6 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,16 +417,15 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
     }
 }

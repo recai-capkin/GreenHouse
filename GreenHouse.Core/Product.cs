@@ -9,7 +9,7 @@ namespace GreenHouse.Core
     [Table("Product")]
     public partial class Product
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductId { get; set; }
 
         [StringLength(50)]

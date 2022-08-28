@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 
 namespace GreenHouse.Core
@@ -46,6 +47,8 @@ namespace GreenHouse.Core
                 .HasMany(e => e.Products1)
                 .WithOptional(e => e.User1)
                 .HasForeignKey(e => e.UserAdminId);
+          
         }
+        
     }
 }

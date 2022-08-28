@@ -16,17 +16,20 @@ namespace GreenHouse.UI
     public partial class AddProduct : Form
     {
         User _user;
-        public string ProductContentPicture="s";
-        public string ProductFrontPicture="s";
-        public string ProductBehindPicture="s";
+        public string ProductContentPicture = "s";
+        public string ProductFrontPicture = "s";
+        public string ProductBehindPicture = "s";
         public int? updateTopCategoryId;
         public int? updateCategoryId;
+        public int productId;
+        bool UpdateStatus = false;
+        
         string dir;
         public AddProduct()
         {
             InitializeComponent();
         }
-        public AddProduct(User user):base()
+        public AddProduct(User user) : base()
         {
             InitializeComponent();
             _user = user;
@@ -55,32 +58,36 @@ namespace GreenHouse.UI
         private void btnAddProductImageContent_Click(object sender, EventArgs e)
         {
             ProductContentPicture = SavePicture();
-            btnAddProductImageContent.BackgroundImage = Image.FromFile(ProductContentPicture);
+            //btnAddProductImageContent.BackgroundImage = Image.FromFile("E:\\Resimler\\" + ProductContentPicture);
+            label11.Visible = true;
+            
 
         }
         public string SavePicture()
         {
-            string returnPath="";
+            string returnPath = "";
             string path = "E:\\Resimler\\";
             OpenFileDialog openFileDialog = new OpenFileDialog();
             string pictureName = Guid.NewGuid().ToString();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 File.Copy(openFileDialog.FileName, path + pictureName + ".jpg");
-                returnPath= pictureName + ".jpg";
+                returnPath = pictureName + ".jpg";
             }
             return returnPath;
         }
         private void btnAddProductImageFront_Click(object sender, EventArgs e)
         {
             ProductFrontPicture = SavePicture();
-            btnAddProductImageFront.BackgroundImage = Image.FromFile(ProductFrontPicture);
+            //btnAddProductImageFront.BackgroundImage = Image.FromFile("E:\\Resimler\\" + ProductFrontPicture);
+            label13.Visible = true;
         }
 
         private void btnAddProductImageBehind_Click(object sender, EventArgs e)
         {
             ProductBehindPicture = SavePicture();
-            btnAddProductImageBehind.BackgroundImage = Image.FromFile(ProductBehindPicture);
+            //btnAddProductImageBehind.BackgroundImage = Image.FromFile("E:\\Resimler\\" + ProductBehindPicture);
+            label12.Visible = true;
         }
 
         private void btnUrunKaydet_Click(object sender, EventArgs e)
@@ -92,49 +99,129 @@ namespace GreenHouse.UI
                 )
             {
                 var deger = productDal.BarkodControl(textBox1.Text);
-                if (deger != true)
+                if (deger != true && UpdateStatus != true)
                 {
-
+                    Product newProduct = new Product()
+                    {
+                        Barkod = textBox1.Text,
+                        ProductName = textBox3.Text,
+                        ProductContentImageSaveTo = ProductContentPicture,
+                        ProductBehindImageSaveTo = ProductBehindPicture,
+                        ProductFrontImageSaveTo = ProductFrontPicture,
+                        DateOfChange = DateTime.Now,
+                    };
+                    string topkategori = comboBox1.Text;
+                    string subkategori = comboBox3.Text;
+                    string marka = textBox2.Text;
+                    String[] content;
+                    String[] tehlikeSeviyesi;
+                    char ayrac = ',';
+                    content = textBox5.Text.Split(ayrac);
+                    tehlikeSeviyesi = textBox6.Text.Split(ayrac);
+                    List<ProductContent> contentList = new List<ProductContent>();
+                    for (int i = 0; i < content.Length; i++)
+                    {
+                        ProductContent productContent = new ProductContent()
+                        {
+                            ContentName = content[i],
+                            ContentThreadLevel = tehlikeSeviyesi[i],
+                            ProductId = productId
+                        };
+                        contentList.Add(productContent);
+                    }
+                    string uretici = comboBox2.Text;
+                    productDal.AddProduct(newProduct, topkategori, subkategori, marka, contentList,uretici);
                 }
                 else
                 {
-                   DialogResult dialogResult= MessageBox.Show("Bu barkoda sahip ürün var. Güncelleme yapmak için Evet, devam etmek için hayır", "Uyarı",MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
+                    if (UpdateStatus)
                     {
-                        var data = productDal.GetProductDetailWithBarkod(textBox1.Text);
-                        textBox1.Text = data.Barkod;
-                        comboBox2.Text = data.ProductProducer.ProducerName;
-                        textBox3.Text = data.ProductName;
-                        comboBox1.Text = productDal.TopCategory(data.CategoryId).CategoryName;
-                        comboBox3.Text = data.ProductCategory.CategoryName;
-                        updateTopCategoryId = productDal.TopCategory(data.CategoryId).CategoryId;
-                        updateCategoryId = data.CategoryId;
-                        ProductContentPicture = data.ProductContentImageSaveTo;
-                        ProductFrontPicture = data.ProductFrontImageSaveTo;
-                        ProductBehindPicture = data.ProductBehindImageSaveTo;
+                        ProductDal productDal1 = new ProductDal();
+                        Product newProduct = new Product()
+                        {
+                            Barkod = textBox1.Text,
+                            ProductId = productId,
+                            ProductName = textBox3.Text,
+                            ProductContentImageSaveTo = ProductContentPicture,
+                            ProductBehindImageSaveTo = ProductBehindPicture,
+                            ProductFrontImageSaveTo = ProductFrontPicture,
+                            DateOfChange = DateTime.Now,
 
-                        
-                        MessageBox.Show(data.ProductBehindImageSaveTo);
-                        
-                        string tempPath = data.ProductBehindImageSaveTo;
-                        MessageBox.Show(tempPath);
-                        
-                        //Image i1 = Image.FromFile(ProductBehindPicture);
-                        //pictureBox1.ImageLocation = ProductFrontPicture;
-                        btnAddProductImageFront.BackgroundImage = Image.FromFile("E:\\Resimler\\"+tempPath);
-                        // btnAddProductImageBehind.BackgroundImage = i1;
-                        
-                        //btnAddProductImageContent.BackgroundImage = Image.FromFile(data.ProductBehindImageSaveTo);
-
-                    }
-                    else if (dialogResult == DialogResult.No)
-                    {
-
+                        };
+                        ProductCategory productCategory = new ProductCategory()
+                        {
+                            CategoryName = comboBox3.Text,
+                            TopCategory = updateTopCategoryId,
+                            CategoryId = (int)updateCategoryId
+                        };
+                        String[] content;
+                        String[] tehlikeSeviyesi;
+                        char ayrac = ',';
+                        content = textBox5.Text.Split(ayrac);
+                        tehlikeSeviyesi = textBox6.Text.Split(ayrac);
+                        List<ProductContent> contentList = new List<ProductContent>();
+                        for (int i = 0; i < content.Length; i++)
+                        {
+                            ProductContent productContent = new ProductContent()
+                            {
+                                ContentName = content[i],
+                                ContentThreadLevel = tehlikeSeviyesi[i],
+                                ProductId = productId
+                            };
+                            contentList.Add(productContent);
+                        }
+                        ProductBrand productBrand = new ProductBrand()
+                        {
+                            BrandName = textBox2.Text
+                        };
+                        ProductProducer productProducer = new ProductProducer()
+                        {
+                            ProducerName = comboBox2.Text
+                        };
+                        var kontrol = productDal1.UpdateProduct(newProduct, productCategory, contentList, productBrand, productProducer);
+                        if (kontrol)
+                        {
+                            MessageBox.Show("Başarıyla Güncellendi");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Hata oluştu");
+                        }
+                        UpdateStatus = false;
                     }
                     else
                     {
+                        DialogResult dialogResult = MessageBox.Show("Bu barkoda sahip ürün var. Güncelleme yapmak için Evet, devam etmek için hayır", "Uyarı", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            var data = productDal.GetProductDetailWithBarkod(textBox1.Text);
+                            productId = data.ProductId;
+                            textBox1.Text = data.Barkod;
+                            textBox2.Text = data.ProductBrand.BrandName;
+                            comboBox2.Text = data.ProductProducer.ProducerName;
+                            textBox3.Text = data.ProductName;
+                            comboBox1.Text = productDal.TopCategory(data.CategoryId).CategoryName;
+                            comboBox3.Text = data.ProductCategory.CategoryName;
+                            updateTopCategoryId = productDal.TopCategory(data.CategoryId).CategoryId;
+                            updateCategoryId = data.CategoryId;
+                            ProductContentPicture = data.ProductContentImageSaveTo;
+                            ProductFrontPicture = data.ProductFrontImageSaveTo;
+                            ProductBehindPicture = data.ProductBehindImageSaveTo;
+                            btnAddProductImageFront.BackgroundImage = Image.FromFile("E:\\Resimler\\" + ProductFrontPicture);
+                            btnAddProductImageBehind.BackgroundImage = Image.FromFile("E:\\Resimler\\" + ProductBehindPicture);
+                            btnAddProductImageContent.BackgroundImage = Image.FromFile("E:\\Resimler\\" + ProductContentPicture);
+                            UpdateStatus = true;
+                        }
+                        else if (dialogResult == DialogResult.No)
+                        {
 
+                        }
+                        else
+                        {
+
+                        }
                     }
+                  
                 }
 
 
@@ -165,7 +252,9 @@ namespace GreenHouse.UI
                 comboBox2.Items.Add(item);
             }
 
-            
+            label11.Visible = false;
+            label12.Visible = false;
+            label13.Visible = false;
         }
     }
 }
