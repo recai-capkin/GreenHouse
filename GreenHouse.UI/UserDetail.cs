@@ -78,5 +78,30 @@ namespace GreenHouse.UI
             BlackList blackList = new BlackList(_user);
             blackList.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ChangePassword changePassword = new ChangePassword(_user);
+            changePassword.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            FormAllergenList allergenList = new FormAllergenList(_user);
+            allergenList.Show();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            ForumAllergenAdd forumAllergenAdd = new ForumAllergenAdd(_user);    
+            forumAllergenAdd.Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide();
+        }
     }
 }

@@ -130,7 +130,7 @@ namespace GreenHouse.UI
                         contentList.Add(productContent);
                     }
                     string uretici = comboBox2.Text;
-                    productDal.AddProduct(newProduct, topkategori, subkategori, marka, contentList,uretici);
+                    productDal.AddProduct(newProduct, topkategori, subkategori, marka, contentList,uretici,_user.UserId);
                 }
                 else
                 {

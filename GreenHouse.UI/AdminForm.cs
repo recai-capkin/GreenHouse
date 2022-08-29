@@ -22,7 +22,7 @@ namespace GreenHouse.UI
         public AdminForm(User user):base()
         {
             _user = user;
-            
+            InitializeComponent();
         }
     }
 }

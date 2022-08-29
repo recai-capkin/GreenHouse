@@ -102,8 +102,9 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(331, 75);
             this.button4.TabIndex = 5;
-            this.button4.Text = "Arama Geçmişi/Favoriler";
+            this.button4.Text = "Arama Geçmişi";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // MainForm
             // 

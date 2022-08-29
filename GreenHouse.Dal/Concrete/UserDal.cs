@@ -33,18 +33,18 @@ namespace GreenHouse.Dal.Concrete
             using (GreenHouseContext greenHouseContext = new GreenHouseContext())
             {
                 var username = greenHouseContext.Users.Where(x => x.UserId == id).SingleOrDefault();
-                return username.Name+username.Surname;
+                return username.Name + username.Surname;
             }
         }
-        public bool UserUpdateEmail(int id,string email)
+        public bool UserUpdateEmail(int id, string email)
         {
-            
+
             using (GreenHouseContext greenHouseContext = new GreenHouseContext())
             {
                 var result = greenHouseContext.Users.Where(x => x.UserId == id).FirstOrDefault();
                 result.UserEmail = email;
                 greenHouseContext.SaveChanges();
-                return true;    
+                return true;
             }
         }
         public bool UserUpdatePassword(int id, string password)
@@ -76,6 +76,24 @@ namespace GreenHouse.Dal.Concrete
                 greenHouseContext.SaveChanges();
                 return true;
             }
+        }
+        public List<SearchHistory> GetSearchHistories(int userId)
+        {
+            try
+            {
+                List<SearchHistory> searchHistories;
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    searchHistories = greenHouseContext.SearchHistories.Where(x => x.UserId == userId).ToList();
+                }
+                return searchHistories;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
     }
 }

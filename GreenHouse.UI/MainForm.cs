@@ -58,5 +58,11 @@ namespace GreenHouse.UI
             mainForm.Show();
             this.Hide();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FormSearchHistory searchHistory = new FormSearchHistory(_user);
+            searchHistory.Show();
+        }
     }
 }

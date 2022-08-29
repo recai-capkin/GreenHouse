@@ -234,7 +234,7 @@ namespace GreenHouse.Dal.Concrete
             }
 
         }
-        public Product AddProduct(Product product, string topkategori, string subkategori, string marka, List<ProductContent> contentList, string uretici)
+        public Product AddProduct(Product product, string topkategori, string subkategori, string marka, List<ProductContent> contentList, string uretici,int userId)
         {
             using (GreenHouseContext greenHouseContext = new GreenHouseContext())
             {
@@ -248,6 +248,7 @@ namespace GreenHouse.Dal.Concrete
                     ProductBehindImageSaveTo = product.ProductBehindImageSaveTo,
                     ProductFrontImageSaveTo = product.ProductFrontImageSaveTo,
                     DateOfChange = DateTime.Now,
+                    UserId = userId
                 });
                 greenHouseContext.SaveChanges();
 
@@ -492,7 +493,63 @@ namespace GreenHouse.Dal.Concrete
                 return newBlackList;
             }
         }
+        public bool UserAllergenAdd(int userId,string allergenName)
+        {
+            try
+            {
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    greenHouseContext.UserAllergens.Add(new UserAllergen()
+                    {
+                        AllergenContentName = allergenName,
+                        UserId = userId
+                    });
+                    greenHouseContext.SaveChanges();
+                    return true;
+                }
+                }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
+
+        public List<string> GetUserAllergen(int userId)
+        {
+            try
+            {
+                List<string> allergenList;
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    allergenList = greenHouseContext.UserAllergens.Where(x => x.UserId == userId).Select(x => x.AllergenContentName).ToList();
+                }
+                return allergenList;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<string> GetProductContent()
+        {
+            try
+            {
+                List<string> contentList;
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    contentList = greenHouseContext.ProductContents.Select(x => x.ContentName).ToList();
+                }
+                return contentList;
+                }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
 
     }

@@ -98,6 +98,24 @@
     <Compile Include="FirstScreen.Designer.cs">
       <DependentUpon>FirstScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAllergenList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAllergenList.Designer.cs">
+      <DependentUpon>FormAllergenList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSearchHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSearchHistory.Designer.cs">
+      <DependentUpon>FormSearchHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForumAllergenAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForumAllergenAdd.Designer.cs">
+      <DependentUpon>ForumAllergenAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Islem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +187,15 @@
     <EmbeddedResource Include="FirstScreen.resx">
       <DependentUpon>FirstScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAllergenList.resx">
+      <DependentUpon>FormAllergenList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSearchHistory.resx">
+      <DependentUpon>FormSearchHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForumAllergenAdd.resx">
+      <DependentUpon>ForumAllergenAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Islem.resx">
       <DependentUpon>Islem.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resource\add-image.png" />
+    <Content Include="Resource\allergen.png" />
     <Content Include="Resource\background.jpg" />
     <Content Include="Resource\backup.png" />
     <Content Include="Resource\barcode.png" />
