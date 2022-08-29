@@ -44,7 +44,6 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.btnSideMenu = new System.Windows.Forms.Button();
-            this.btnUserDetail = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -115,6 +114,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "E-posta Adresini Değiştir";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
@@ -159,6 +159,7 @@
             this.button6.TabIndex = 11;
             this.button6.Text = "Favoriler";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -170,6 +171,7 @@
             this.button7.TabIndex = 12;
             this.button7.Text = "Kara Liste";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -204,17 +206,6 @@
             this.btnSideMenu.UseVisualStyleBackColor = true;
             this.btnSideMenu.Click += new System.EventHandler(this.btnSideMenu_Click);
             // 
-            // btnUserDetail
-            // 
-            this.btnUserDetail.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUserDetail.BackgroundImage")));
-            this.btnUserDetail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnUserDetail.Location = new System.Drawing.Point(317, 4);
-            this.btnUserDetail.Name = "btnUserDetail";
-            this.btnUserDetail.Size = new System.Drawing.Size(39, 35);
-            this.btnUserDetail.TabIndex = 19;
-            this.btnUserDetail.UseVisualStyleBackColor = true;
-            this.btnUserDetail.Click += new System.EventHandler(this.btnUserDetail_Click);
-            // 
             // btnHome
             // 
             this.btnHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHome.BackgroundImage")));
@@ -232,7 +223,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(368, 590);
             this.Controls.Add(this.btnHome);
-            this.Controls.Add(this.btnUserDetail);
             this.Controls.Add(this.btnSideMenu);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -249,7 +239,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UserDetail";
-            this.Text = "UserDetail";
+            this.Text = " ";
+            this.Load += new System.EventHandler(this.UserDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,7 +263,6 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button btnSideMenu;
-        private System.Windows.Forms.Button btnUserDetail;
         private System.Windows.Forms.Button btnHome;
     }
 }

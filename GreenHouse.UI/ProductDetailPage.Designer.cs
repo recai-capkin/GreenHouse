@@ -58,6 +58,8 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -240,6 +242,7 @@
             this.button2.Size = new System.Drawing.Size(72, 71);
             this.button2.TabIndex = 18;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnHome
             // 
@@ -333,11 +336,33 @@
             this.label23.TabIndex = 28;
             this.label23.Text = "-----";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(666, 674);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 45);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Favorilere Ekle";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(666, 623);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(122, 45);
+            this.button3.TabIndex = 30;
+            this.button3.Text = "Kara Liste Ekle";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // ProductDetailPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 731);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
@@ -407,5 +432,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
     }
 }

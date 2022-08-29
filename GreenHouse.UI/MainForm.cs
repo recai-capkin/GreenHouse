@@ -40,7 +40,7 @@ namespace GreenHouse.UI
 
         private void btnUserDetail_Click(object sender, EventArgs e)
         {
-            UserDetail userDetail = new UserDetail();
+            UserDetail userDetail = new UserDetail(_user);
             userDetail.Show();
             this.Hide();
         }

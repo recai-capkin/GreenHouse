@@ -35,7 +35,6 @@
             this.btnArama = new System.Windows.Forms.Button();
             this.btnAddProductOrUpdate = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSideMenu
@@ -106,24 +105,12 @@
             this.button4.Text = "Arama Geçmişi/Favoriler";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button5
-            // 
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button5.Location = new System.Drawing.Point(12, 479);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(144, 138);
-            this.button5.TabIndex = 6;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1197, 629);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnAddProductOrUpdate);
             this.Controls.Add(this.btnArama);
@@ -144,6 +131,5 @@
         private System.Windows.Forms.Button btnArama;
         private System.Windows.Forms.Button btnAddProductOrUpdate;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
     }
 }

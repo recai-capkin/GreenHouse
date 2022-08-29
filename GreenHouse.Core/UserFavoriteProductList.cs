@@ -17,5 +17,9 @@ namespace GreenHouse.Core
         public int? UserId { get; set; }
 
         public virtual User User { get; set; }
+        public override string ToString()
+        {
+            return ProductListName;
+        }
     }
 }

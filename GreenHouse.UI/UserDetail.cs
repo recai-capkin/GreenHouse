@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GreenHouse.Core;
+using GreenHouse.Dal.Concrete;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +14,22 @@ namespace GreenHouse.UI
 {
     public partial class UserDetail : Form
     {
+        User _user;
+
         public UserDetail()
         {
+            InitializeComponent();
+        }
+        public UserDetail(User user):base()
+        {
+            _user = user;
             InitializeComponent();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            MainForm mainForm = new MainForm();
-            mainForm.Show();
+            MainForm mainForm = new MainForm(_user);
+            mainForm.ShowDialog();
             this.Hide();
         }
 
@@ -32,9 +41,42 @@ namespace GreenHouse.UI
 
         private void btnUserDetail_Click(object sender, EventArgs e)
         {
-            UserDetail userDetail = new UserDetail();
-            userDetail.Show();
-            this.Hide();
+            
+        }
+
+        private void UserDetail_Load(object sender, EventArgs e)
+        {
+            ProductDal productDal = new ProductDal();
+            if (_user.UserRole.UserRoleName != "PremiumUser")
+            {
+                button2.Visible = true;
+            }
+            else
+            {
+                button2.Visible=false;
+            }
+            label1.Text = _user.Name + " " + _user.Surname;
+            label3.Text = _user.UserAddDate.ToString();
+            label4.Text = productDal.UserProductAddCount(_user.UserId).ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ChangeEmail changeEmail = new ChangeEmail(_user);
+            changeEmail.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Favorites favorites = new Favorites(_user);
+            favorites.Show();
+            
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            BlackList blackList = new BlackList(_user);
+            blackList.Show();
         }
     }
 }

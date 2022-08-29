@@ -39,9 +39,9 @@ namespace GreenHouse.UI
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            
-            MainForm mainForm = new MainForm();
-            mainForm.Show();
+
+            MainForm mainForm = new MainForm(_user);
+            mainForm.ShowDialog();
             this.Hide();
         }
 
@@ -60,6 +60,65 @@ namespace GreenHouse.UI
             Product data = (Product)listBox1.SelectedItem;
             ProductDetailPage productDetailPage = new ProductDetailPage(data, _user);
             productDetailPage.Show();
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //ProductGetAllWithDetailFilterByName
+            listBox1.Items.Clear();
+            ProductDal productDal = new ProductDal();
+            foreach (var item in productDal.ProductGetAllWithDetailFilterByName(textBox1.Text))
+            {
+                listBox1.Items.Add(item);
+            }
+            SearchHistory searchHistory = new SearchHistory()
+            {
+                SearchDate = DateTime.Now,
+                SearchText = textBox1.Text,
+                UserId = _user.UserId
+            };
+            productDal.AddSearchHistory(searchHistory);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            ProductDal productDal = new ProductDal();
+            foreach (var item in productDal.ProductGetAllWithDetailFilterByBarkod(textBox2.Text))
+            {
+                listBox1.Items.Add(item);
+            }
+            SearchHistory searchHistory = new SearchHistory()
+            {
+                SearchDate = DateTime.Now,
+                SearchText = textBox1.Text,
+                UserId = _user.UserId
+            };
+            productDal.AddSearchHistory(searchHistory);
+        }
+
+        private void listBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                //select the item under the mouse pointer
+                listBox1.SelectedIndex = listBox1.IndexFromPoint(e.Location);
+
+                string _selectedMenuItem = listBox1.Items[listBox1.SelectedIndex].ToString();
+                MessageBox.Show(_selectedMenuItem.ToString());
+            }
+        }
+
+        private void btnUserDetail_Click(object sender, EventArgs e)
+        {
+            UserDetail userDetail = new UserDetail(_user);
+            userDetail.Show();
+            this.Hide();
         }
     }
 }

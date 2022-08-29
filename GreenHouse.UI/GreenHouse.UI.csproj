@@ -62,11 +62,47 @@
     <Compile Include="AddProduct.Designer.cs">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlackList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BlackList.Designer.cs">
+      <DependentUpon>BlackList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeEmail.Designer.cs">
+      <DependentUpon>ChangeEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Favorites.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Favorites.Designer.cs">
+      <DependentUpon>Favorites.cs</DependentUpon>
+    </Compile>
     <Compile Include="FirstScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FirstScreen.Designer.cs">
       <DependentUpon>FirstScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Islem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Islem.Designer.cs">
+      <DependentUpon>Islem.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -106,11 +142,35 @@
     <Compile Include="UserDetail.Designer.cs">
       <DependentUpon>UserDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserRegister.Designer.cs">
+      <DependentUpon>UserRegister.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlackList.resx">
+      <DependentUpon>BlackList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeEmail.resx">
+      <DependentUpon>ChangeEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Favorites.resx">
+      <DependentUpon>Favorites.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FirstScreen.resx">
       <DependentUpon>FirstScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Islem.resx">
+      <DependentUpon>Islem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -138,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserDetail.resx">
       <DependentUpon>UserDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserRegister.resx">
+      <DependentUpon>UserRegister.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -191,6 +254,10 @@
     <ProjectReference Include="..\GreenHouse.Dal\GreenHouse.Dal.csproj">
       <Project>{49B51E36-0D3B-43D9-8CEC-50047BDA2CC5}</Project>
       <Name>GreenHouse.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GreenHouse.Dto\GreenHouse.Dto.csproj">
+      <Project>{251FCDF3-E2C6-432D-92DA-64B1E08835D3}</Project>
+      <Name>GreenHouse.Dto</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

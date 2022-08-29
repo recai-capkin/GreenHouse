@@ -35,11 +35,18 @@ namespace GreenHouse.UI
             }
             else if(kullanici.UserRole.UserRoleName.ToLower() == "admin")
             {
-                MainForm mainForm = new MainForm(kullanici);
-                mainForm.Show();
+                AdminForm adminForm = new AdminForm(kullanici);
+                adminForm.Show();
                 this.Hide();
             }
             
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            UserRegister userRegister = new UserRegister();
+            userRegister.Show();
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GreenHouse.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,16 +11,18 @@ using System.Windows.Forms;
 
 namespace GreenHouse.UI
 {
-    public partial class Navbar : Form
+    public partial class AdminForm : Form
     {
-        public Navbar()
+        User _user;
+        
+        public AdminForm()
         {
             InitializeComponent();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        public AdminForm(User user):base()
         {
-            MessageBox.Show("Ürün alerjenleri hakkında bir uygulama.");
+            _user = user;
+            
         }
     }
 }

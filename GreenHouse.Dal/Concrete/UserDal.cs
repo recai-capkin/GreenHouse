@@ -1,5 +1,6 @@
 ﻿using GreenHouse.Core;
 using GreenHouse.Dal.Abstract.Interface;
+using GreenHouse.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,47 @@ namespace GreenHouse.Dal.Concrete
             {
                 var username = greenHouseContext.Users.Where(x => x.UserId == id).SingleOrDefault();
                 return username.Name+username.Surname;
+            }
+        }
+        public bool UserUpdateEmail(int id,string email)
+        {
+            
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                var result = greenHouseContext.Users.Where(x => x.UserId == id).FirstOrDefault();
+                result.UserEmail = email;
+                greenHouseContext.SaveChanges();
+                return true;    
+            }
+        }
+        public bool UserUpdatePassword(int id, string password)
+        {
+
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                var result = greenHouseContext.Users.Where(x => x.UserId == id).FirstOrDefault();
+                result.UserPassword = password;
+                greenHouseContext.SaveChanges();
+                return true;
+            }
+        }
+        public bool UserRegister(UserRegisterDto user)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                var role = greenHouseContext.UserRoles.Where(x => x.UserRoleName == user.Rol).FirstOrDefault();
+                greenHouseContext.Users.Add(new User()
+                {
+                    Name = user.Ad,
+                    UserName = user.KullaniciAdi,
+                    UserPassword = user.Sifre,
+                    UserEmail = user.Email,
+                    Adress = user.Adres,
+                    Phone = user.Telefon,
+                    UserRoleId = role.UserRoleId
+                });
+                greenHouseContext.SaveChanges();
+                return true;
             }
         }
     }

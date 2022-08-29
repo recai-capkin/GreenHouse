@@ -26,6 +26,7 @@ namespace GreenHouse.Core
         public virtual DbSet<UserAllergen> UserAllergens { get; set; }
         public virtual DbSet<BlackList> BlackLists { get; set; }
         public virtual DbSet<FavoriteProduct> FavoriteProducts { get; set; }
+        public virtual DbSet<SearchHistory> SearchHistories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

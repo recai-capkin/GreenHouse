@@ -240,18 +240,6 @@ namespace GreenHouse.Dal.Concrete
             {
 
 
-
-                //var addedEntity = greenHouseContext.Entry(new Product()
-                //{
-                //    Barkod = product.Barkod,
-                //    ProductName = product.ProductName,
-                //    ProductContentImageSaveTo = product.ProductContentImageSaveTo,
-                //    ProductBehindImageSaveTo = product.ProductBehindImageSaveTo,
-                //    ProductFrontImageSaveTo = product.ProductFrontImageSaveTo,
-                //    DateOfChange = DateTime.Now,
-                //});
-                // addedEntity.State = EntityState.Added;
-
                 greenHouseContext.Products.Add(new Product()
                 {
                     Barkod = product.Barkod,
@@ -301,13 +289,13 @@ namespace GreenHouse.Dal.Concrete
                     var newMarka = greenHouseContext.ProductBrands.Where(x => x.BrandName == marka).SingleOrDefault();
                     data.BrandId = newMarka.BrandId;
                 }
-                
+
                 foreach (var item in contentList)
                 {
                     ProductContent content = new ProductContent()
-                    { 
+                    {
                         ContentName = item.ContentName,
-                        ContentThreadLevel = item.ContentThreadLevel,   
+                        ContentThreadLevel = item.ContentThreadLevel,
                         ProductId = data.ProductId
                     };
                     var ae = greenHouseContext.Entry(content);
@@ -338,11 +326,175 @@ namespace GreenHouse.Dal.Concrete
             }
         }
 
-        
+        public List<Product> ProductGetAllWithDetailFilterByName(string productName)
+        {
+            try
+            {
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    var product =
+                        greenHouseContext.Products.Include("ProductBrand").Include("ProductProducer").Include("ProductCategory").Where(x => x.ProductName.Contains(productName)).ToList();
+                    return product;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public List<Product> ProductGetAllWithDetailFilterByBarkod(string barkod)
+        {
+            try
+            {
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    var product =
+                        greenHouseContext.Products.Include("ProductBrand").Include("ProductProducer").Include("ProductCategory").Where(x => x.Barkod.Contains(barkod)).ToList();
+                    return product;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        public bool AddSearchHistory(SearchHistory searchHistory)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                greenHouseContext.SearchHistories.Add(new SearchHistory()
+                {
+                    SearchDate = searchHistory.SearchDate,
+                    SearchText = searchHistory.SearchText,
+                    UserId = searchHistory.UserId,
+                });
+                greenHouseContext.SaveChanges();
+                return true;
+            }
+        }
+
+
+        public int CreateFavoriteList(int userId, string listeAdi)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                greenHouseContext.UserFavoriteProductLists.Add(new UserFavoriteProductList()
+                {
+                    ProductListName = listeAdi,
+                    UserId = userId,
+                });
+                greenHouseContext.SaveChanges();
+                var list = greenHouseContext.UserFavoriteProductLists.Where(x => x.ProductListName == listeAdi && x.UserId == userId).SingleOrDefault();
+                return list.FavoriteProductListId;
+            }
+        }
+        public bool AddFavoriteList(string listName, int productId, int userId)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                int baseListId;
+                var liste = greenHouseContext.UserFavoriteProductLists.Where(x => x.ProductListName == listName && x.UserId == userId).FirstOrDefault();
+                if (liste == null)
+                {
+                    baseListId = CreateFavoriteList(userId, listName);
+                    greenHouseContext.FavoriteProducts.Add(new FavoriteProduct()
+                    {
+                        FavoriteProductListId = baseListId,
+                        ProductId = productId
+
+                    });
+                }
+                else
+                {
+
+                    baseListId = liste.FavoriteProductListId;
+                    greenHouseContext.FavoriteProducts.Add(new FavoriteProduct()
+                    {
+                        FavoriteProductListId = baseListId,
+                        ProductId = productId
+
+                    });
+
+                }
+                greenHouseContext.SaveChanges();
+                return true;
+            }
+        }
+
+        public List<UserFavoriteProductList> GetFavoriteProductLists(int id)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                var list = greenHouseContext.UserFavoriteProductLists.Where(x => x.UserId == id).ToList();
+                return list;
+            }
+
+        }
+
+        public bool AddBlackList(int productId, int userId)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                greenHouseContext.BlackLists.Add(new BlackList()
+                {
+                    ProductId = productId,
+                    UserId = userId,
+                });
+                greenHouseContext.SaveChanges();
+                return true;
+            }
+        }
+
+        public int UserProductAddCount(int userId)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                var deger = greenHouseContext.Products.Where(x => x.UserId == userId).Count();
+                return deger;
+            }
+
+        }
+
+        public List<FavoriteProductDto> GetFavoriteProducts(int userId, string listName)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                var pList = greenHouseContext.UserFavoriteProductLists.Where(x => x.UserId == userId && x.ProductListName == listName).SingleOrDefault();
+                var content = greenHouseContext.FavoriteProducts.Where(x => x.FavoriteProductListId == pList.FavoriteProductListId).ToList();
+                List<FavoriteProductDto> favoriteProductDtoslist = new List<FavoriteProductDto>();
+                foreach (var item in content)
+                {
+                    var data = greenHouseContext.Products.Where(x => x.ProductId == item.ProductId).SingleOrDefault();
+                    favoriteProductDtoslist.Add(new FavoriteProductDto
+                    {
+                        ProductName = data.ProductName
+                    });
+                }
+                return favoriteProductDtoslist;
+            }
+        }
+
+
+        public List<string> GetBlackList(int userId)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                var data = greenHouseContext.BlackLists.Where(x =>x.UserId == userId).ToList();
+                List<string> newBlackList = new List<string>();
+                foreach (var item in data)
+                {
+                    var newData = greenHouseContext.Products.Where(x => x.ProductId == item.ProductId).SingleOrDefault();
+                    newBlackList.Add(newData.ProductName);
+                }
+                return newBlackList;
+            }
+        }
+
+
+
     }
-
-
-
-
 }
 

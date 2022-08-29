@@ -117,5 +117,26 @@ namespace GreenHouse.Dal
             mainForm.ShowDialog();
             this.Hide();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Islem islem = new Islem(_product,_user);
+            islem.Show();
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ProductDal productDal = new ProductDal();
+            productDal.AddBlackList(_product.ProductId, _user.UserId);
+            MessageBox.Show("Ürün karalisteye eklendi");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            UserDetail userDetail = new UserDetail(_user);
+            userDetail.Show();
+            this.Hide();
+        }
     }
 }

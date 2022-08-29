@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace GreenHouse.Core
 {
-    [Table("FavoriteProduct")]
-    public class FavoriteProduct
+    [Table("SearchHistory")]
+    public class SearchHistory
     {
         public int Id { get; set; }
-        public int FavoriteProductListId { get; set; }
-        public int ProductId { get; set; }
+        public int UserId { get; set; }
+        public string SearchText { get; set; }
+        public DateTime SearchDate { get; set; }
     }
 }

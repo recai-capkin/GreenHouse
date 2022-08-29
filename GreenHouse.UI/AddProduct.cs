@@ -37,7 +37,7 @@ namespace GreenHouse.UI
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            MainForm mainForm = new MainForm();
+            MainForm mainForm = new MainForm(_user);
             mainForm.Show();
             this.Hide();
         }
@@ -50,7 +50,7 @@ namespace GreenHouse.UI
 
         private void btnUserDetail_Click(object sender, EventArgs e)
         {
-            UserDetail userDetail = new UserDetail();
+            UserDetail userDetail = new UserDetail(_user);
             userDetail.Show();
             this.Hide();
         }
