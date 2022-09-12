@@ -45,21 +45,25 @@
             this.btnSideMenu = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -223,16 +227,6 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "Ürün İçeriği";
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(125, 410);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(379, 17);
-            this.checkBox1.TabIndex = 18;
-            this.checkBox1.Text = "Gönderdiğim ürün sayfasında kullanıcı adminin görüntülemesini onaylıyorum.";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -261,6 +255,11 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button5);
+            this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.label11);
@@ -277,7 +276,6 @@
             this.tabPage1.Controls.Add(this.btnUrunKaydet);
             this.tabPage1.Controls.Add(this.btnAddProductImageBehind);
             this.tabPage1.Controls.Add(this.btnAddProductImageFront);
-            this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.btnAddProductImageContent);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label6);
@@ -293,25 +291,48 @@
             this.tabPage1.Text = "Ürün Ekle";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // openFileDialog1
+            // label13
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(77, 690);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(42, 13);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "Eklendi";
             // 
-            // comboBox1
+            // label12
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(130, 151);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(436, 21);
-            this.comboBox1.TabIndex = 22;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(567, 690);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(42, 13);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "Eklendi";
             // 
-            // comboBox2
+            // label11
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(128, 60);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(436, 21);
-            this.comboBox2.TabIndex = 23;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(567, 598);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(42, 13);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "Eklendi";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(40, 238);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 13);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Marka";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(130, 235);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(436, 20);
+            this.textBox2.TabIndex = 26;
             // 
             // comboBox3
             // 
@@ -330,48 +351,75 @@
             this.label9.TabIndex = 24;
             this.label9.Text = "Alt Kategori";
             // 
-            // label10
+            // comboBox2
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(40, 238);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(37, 13);
-            this.label10.TabIndex = 27;
-            this.label10.Text = "Marka";
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(128, 60);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(436, 21);
+            this.comboBox2.TabIndex = 23;
             // 
-            // textBox2
+            // comboBox1
             // 
-            this.textBox2.Location = new System.Drawing.Point(130, 235);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(436, 20);
-            this.textBox2.TabIndex = 26;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(130, 151);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(436, 21);
+            this.comboBox1.TabIndex = 22;
             // 
-            // label11
+            // openFileDialog1
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(567, 598);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(42, 13);
-            this.label11.TabIndex = 28;
-            this.label11.Text = "Eklendi";
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label12
+            // button1
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(567, 690);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(42, 13);
-            this.label12.TabIndex = 29;
-            this.label12.Text = "Eklendi";
+            this.button1.Location = new System.Drawing.Point(567, 433);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 27);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "Riskli";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label13
+            // button2
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(77, 690);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(42, 13);
-            this.label13.TabIndex = 30;
-            this.label13.Text = "Eklendi";
+            this.button2.Location = new System.Drawing.Point(567, 466);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 27);
+            this.button2.TabIndex = 32;
+            this.button2.Text = "Orta Riskli";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(567, 498);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 27);
+            this.button3.TabIndex = 33;
+            this.button3.Text = "Az Riskli";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(567, 531);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 27);
+            this.button4.TabIndex = 34;
+            this.button4.Text = "Temiz";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(591, 781);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(114, 70);
+            this.button5.TabIndex = 35;
+            this.button5.Text = "Temizle";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // AddProduct
             // 
@@ -412,7 +460,6 @@
         private System.Windows.Forms.Button btnSideMenu;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TabControl tabControl1;
@@ -427,5 +474,10 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button5;
     }
 }

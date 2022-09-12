@@ -95,5 +95,28 @@ namespace GreenHouse.Dal.Concrete
             }
 
         }
+
+        public bool UpdateUserProfile(UserUpdateProfileDto userUpdateProfileDto)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                try
+                {
+                    var result = greenHouseContext.Users.Where(x => x.UserId == userUpdateProfileDto.UserId).FirstOrDefault();
+                    result.Name = userUpdateProfileDto.Name;
+                    result.Adress = userUpdateProfileDto.Address;
+                    result.Phone = userUpdateProfileDto.Phone;
+                    result.Surname = userUpdateProfileDto.Surname;
+                    greenHouseContext.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            }
+        }
     }
 }

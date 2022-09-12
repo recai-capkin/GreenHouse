@@ -103,5 +103,11 @@ namespace GreenHouse.UI
             loginForm.Show();
             this.Hide();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            FormUserUpdateProfile formUserUpdateProfile = new FormUserUpdateProfile(_user);
+            formUserUpdateProfile.Show();
+        }
     }
 }

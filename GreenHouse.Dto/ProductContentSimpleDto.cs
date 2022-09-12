@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace GreenHouse.Dto
 {
-    public class FavoriteProductDto
+    public class ProductContentSimpleDto
     {
+        public int ID { get; set; }
         public string ProductName { get; set; }
-        public int ProductCount { get; set; }
+        public int ContentCount { get; set; }
     }
 }

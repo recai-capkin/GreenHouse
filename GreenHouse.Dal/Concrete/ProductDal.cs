@@ -234,7 +234,7 @@ namespace GreenHouse.Dal.Concrete
             }
 
         }
-        public Product AddProduct(Product product, string topkategori, string subkategori, string marka, List<ProductContent> contentList, string uretici,int userId)
+        public Product AddProduct(Product product, string topkategori, string subkategori, string marka, List<ProductContent> contentList, string uretici, int userId)
         {
             using (GreenHouseContext greenHouseContext = new GreenHouseContext())
             {
@@ -248,6 +248,7 @@ namespace GreenHouse.Dal.Concrete
                     ProductBehindImageSaveTo = product.ProductBehindImageSaveTo,
                     ProductFrontImageSaveTo = product.ProductFrontImageSaveTo,
                     DateOfChange = DateTime.Now,
+                    DateOfAdd = DateTime.Now,
                     UserId = userId
                 });
                 greenHouseContext.SaveChanges();
@@ -262,16 +263,65 @@ namespace GreenHouse.Dal.Concrete
                 else
                 {
                     var oldTopCate = greenHouseContext.ProductCategories.Where(x => x.CategoryName == topkategori).SingleOrDefault();
-                    ProductCategory productCategory = new ProductCategory()
+                    if (oldTopCate == null)
                     {
-                        CategoryName = subkategori,
-                        TopCategory = oldTopCate.CategoryId
-                    };
-                    var ae = greenHouseContext.Entry(productCategory);
-                    ae.State = EntityState.Added;
-                    greenHouseContext.SaveChanges();
-                    var newcate = greenHouseContext.ProductCategories.Where(x => x.CategoryName == subkategori).SingleOrDefault();
-                    data.CategoryId = newcate.CategoryId;
+                        ProductCategory newTopcategory = new ProductCategory()
+                        {
+                            CategoryName = topkategori,
+                        };
+                        var addOldTopCategory = greenHouseContext.Entry(newTopcategory);
+                        addOldTopCategory.State = EntityState.Added;
+                        greenHouseContext.SaveChanges();
+                        newTopcategory.TopCategory = newTopcategory.CategoryId;
+
+                        var updatedEntity = greenHouseContext.Entry(newTopcategory);
+                        updatedEntity.State = EntityState.Modified;
+                        greenHouseContext.SaveChanges();
+                        var oldSubCategory = greenHouseContext.ProductCategories.Where(x => x.CategoryName == subkategori).FirstOrDefault();
+                        if (oldSubCategory == null)
+                        {
+                            ProductCategory newSubCategory = new ProductCategory()
+                            {
+                                CategoryName = subkategori,
+                                TopCategory = newTopcategory.CategoryId
+                            };
+                            var addNewSubCategory = greenHouseContext.Entry(newSubCategory);
+                            addNewSubCategory.State = EntityState.Added;
+                            greenHouseContext.SaveChanges();
+                            data.CategoryId = newSubCategory.CategoryId;
+                        }
+                        else
+                        {
+                            data.CategoryId = oldSubCategory.CategoryId;
+                        }
+
+
+
+                    }
+                    else
+                    {
+                        ProductCategory newSubcategory = new ProductCategory()
+                        {
+
+                            CategoryName = subkategori,
+                            TopCategory = oldTopCate.CategoryId
+                        };
+                        var addSubCategory = greenHouseContext.Entry(newSubcategory);
+                        addSubCategory.State = EntityState.Added;
+                        greenHouseContext.SaveChanges();
+                        data.CategoryId = newSubcategory.CategoryId;
+
+                    }
+                    //ProductCategory productCategory = new ProductCategory()
+                    //{
+                    //    CategoryName = subkategori,
+                    //    TopCategory = oldTopCate.CategoryId
+                    //};
+                    //var ae = greenHouseContext.Entry(productCategory);
+                    //ae.State = EntityState.Added;
+                    //greenHouseContext.SaveChanges();
+                    //var newcate = greenHouseContext.ProductCategories.Where(x => x.CategoryName == subkategori).SingleOrDefault();
+
                 }
                 var oldmarka = greenHouseContext.ProductBrands.Where(x => x.BrandName == marka).SingleOrDefault();
                 if (oldmarka != null)
@@ -483,7 +533,7 @@ namespace GreenHouse.Dal.Concrete
         {
             using (GreenHouseContext greenHouseContext = new GreenHouseContext())
             {
-                var data = greenHouseContext.BlackLists.Where(x =>x.UserId == userId).ToList();
+                var data = greenHouseContext.BlackLists.Where(x => x.UserId == userId).ToList();
                 List<string> newBlackList = new List<string>();
                 foreach (var item in data)
                 {
@@ -493,7 +543,7 @@ namespace GreenHouse.Dal.Concrete
                 return newBlackList;
             }
         }
-        public bool UserAllergenAdd(int userId,string allergenName)
+        public bool UserAllergenAdd(int userId, string allergenName)
         {
             try
             {
@@ -507,7 +557,7 @@ namespace GreenHouse.Dal.Concrete
                     greenHouseContext.SaveChanges();
                     return true;
                 }
-                }
+            }
             catch (Exception)
             {
 
@@ -543,7 +593,7 @@ namespace GreenHouse.Dal.Concrete
                     contentList = greenHouseContext.ProductContents.Select(x => x.ContentName).ToList();
                 }
                 return contentList;
-                }
+            }
             catch (Exception)
             {
 
@@ -552,6 +602,218 @@ namespace GreenHouse.Dal.Concrete
         }
 
 
+        public List<ProductContentSimpleDto> GetSimpleProductWithContent()
+        {
+            try
+            {
+                List<ProductContentSimpleDto> productContentSimpleDtos = new List<ProductContentSimpleDto>();
+
+                List<Product> tempProduct;
+                List<ProductContent> tempProductContent;
+
+                //ProductContentSimpleDto tempproductContentSimpleDto;
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    tempProduct = greenHouseContext.Products.ToList();
+                    tempProductContent = greenHouseContext.ProductContents.ToList();
+
+                    foreach (var item in tempProduct)
+                    {
+                        productContentSimpleDtos.Add(new ProductContentSimpleDto()
+                        {
+                            ContentCount = tempProductContent.Where(x => x.ProductId == item.ProductId).Count(),
+                            ProductName = item.ProductName,
+                        });
+                    }
+                }
+                return productContentSimpleDtos;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Product> IsIncludeContentProduct(string contentName)
+        {
+            try
+            {
+                var list = new List<ProductContent>();
+                var product = new List<Product>();
+                using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+                {
+                    list = greenHouseContext.ProductContents.Where(x => x.ContentName == contentName).ToList();
+                    foreach (var item in list)
+                    {
+                        if (item.ContentName == contentName)
+                        {
+                            product.Add(greenHouseContext.Products.Where(x => x.ProductId == item.ProductId).SingleOrDefault());
+                        }
+                    }
+
+                }
+                return product;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Product> GetAllProductIsVerificationAndMonth()
+        {
+            var product = new List<Product>();
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                product = greenHouseContext.Products.Where(x => x.UserAdminId != null && x.AdminVerificationDate.Value.Month == DateTime.Now.Month).ToList();
+            }
+            return product;
+        }
+
+        //En az riski olan ürünler neler ve bunların kaçı favoride
+        //public List<ProductRiskAndFavoriteDto> GetProductRiskAndFavorite()
+        //{
+        //    var returnData = new List<ProductRiskAndFavoriteDto>();
+        //    using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+        //    {
+        //        var data = greenHouseContext
+        //    }
+        //}
+
+        public List<UserAddedProductDto> GetUserAddedProduct()
+        {
+            var data = new List<UserAddedProductDto>();
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                var newData = greenHouseContext.Users
+                    .Join(
+                    greenHouseContext.Products,
+                    x => x.UserId,
+                    x => x.UserId,
+                    (a, b) => new
+                    {
+                        Id = a.UserId,
+                        ProductCount = a.Products.Count(x => x.UserId == a.UserId),
+                        FullUserName = a.Name
+                    })
+                    .GroupBy(onceki => onceki.FullUserName).Select(grup => new UserAddedProductDto
+                    {
+                        Id = grup.Select(x => x.Id).FirstOrDefault(),
+                        FullUserName = grup.Key,
+                        ProductCount = grup.Count()
+                    }).ToList();
+
+                //).GroupBy(X => X.FullUserName,y => y.Id)
+                //.ToList()
+                //.Select((a,b) => new UserAddedProductDto { FullUserName = a.Key,Id = a.Select( x=> x.)});
+                //data = newData;
+                return newData;
+            }
+        }
+        public List<UserAddedProductDto> GetUserAddedProductList()
+        {
+            var data = new List<UserAddedProductDto>();
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                var newData = greenHouseContext.Users
+                    .Join(
+                    greenHouseContext.Products,
+                    x => x.UserId,
+                    x => x.UserId,
+                    (a, b) => new UserAddedProductDto
+                    {
+                        ProductCount = a.Products.Count(),
+                        FullUserName = a.Name + a.Surname
+                    }
+                    ).Distinct().ToList();
+                //data = newData;
+                return newData;
+            }
+        }
+
+        public List<Product> GetUnvouchedProductList()
+        {
+            var data = new List<Product>();
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                data = greenHouseContext.Products.Include(x => x.ProductBrand).Include(x => x.ProductProducer).Where(x => x.UserAdminId == null).ToList();
+            }
+            return data;
+        }
+
+        public bool VerificationProduct(Product product)
+        {
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                Product oldProduct = greenHouseContext.Products.Find(product.ProductId);
+                if (oldProduct != null)
+                {
+                    oldProduct.AdminVerificationDate = product.AdminVerificationDate;
+                    oldProduct.UserAdminId = product.UserAdminId;
+                    var updatedEntity = greenHouseContext.Entry(oldProduct);
+                    updatedEntity.State = EntityState.Modified;
+                    greenHouseContext.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+        }
+        public List<FavoriteProductDto> MostFavoriteProduct()
+        {
+            var data = new List<FavoriteProductDto>();
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                data = greenHouseContext.Products
+                   .Join(
+                   greenHouseContext.FavoriteProducts,
+                   x => x.ProductId,
+                   x => x.ProductId,
+                   (x, y) => new
+                   {
+                       ProductName = x.ProductName,
+                       ProductId = y.ProductId,
+
+                   }).GroupBy(x => x.ProductName).Select(x => new FavoriteProductDto
+                   {
+                       ProductName = x.Key,
+                       ProductCount = x.Count()
+                   }).OrderByDescending(x => x.ProductCount).ToList();
+            }
+            return data;
+        }
+
+        public List<ProductAddUserCount> ProductAddUserCounts()
+        {
+            var data = new List<ProductAddUserCount>();
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                 data = greenHouseContext.Users
+                    .Join(
+                    greenHouseContext.Products,
+                    x => x.UserId,
+                    x => x.UserId,
+                    (x, y) => new ProductAddUserCount
+                    {
+                        Username = x.UserName,
+                        Email = x.UserEmail,
+                        AddedProductCount =y.ProductId
+                    }).GroupBy(x => new { x.Username }).Select(x => new ProductAddUserCount 
+                    {
+                        Username =x.Key.Username, 
+                        Email = x.Select(p => p.Email).FirstOrDefault(),
+                        AddedProductCount = x.Count(),
+                    }).ToList();
+            }
+            return data;
+        }
     }
 }
 

@@ -43,10 +43,15 @@
   <ItemGroup>
     <Compile Include="FavoriteProductDto.cs" />
     <Compile Include="LogDto.cs" />
+    <Compile Include="ProductAddUserCount.cs" />
     <Compile Include="ProductContentDto.cs" />
+    <Compile Include="ProductContentSimpleDto.cs" />
     <Compile Include="ProductDto.cs" />
+    <Compile Include="ProductRiskAndFavoriteDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserAddedProductDto.cs" />
     <Compile Include="UserRegisterDto.cs" />
+    <Compile Include="UserUpdateProfileDto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

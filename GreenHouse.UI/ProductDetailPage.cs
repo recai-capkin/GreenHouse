@@ -2,10 +2,12 @@
 using GreenHouse.Dal.Concrete;
 using GreenHouse.UI;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,12 +31,20 @@ namespace GreenHouse.Dal
             InitializeComponent();
             label17.Visible = false;    
         }
+       
 
         private void ProductDetailPage_Load(object sender, EventArgs e)
         {
             label20.Text = _product.ProductCategory.CategoryName;
             label19.Text = _product.ProductBrand.BrandName;
             label18.Text = _product.ProductName;
+
+            //FileStream FS = new FileStream("E:\\Resimler\\" + _product.ProductFrontImageSaveTo, FileMode.Open,FileAccess.Read);
+            //Image im = Image.FromStream(FS,true,false);
+            //Image i = Image.FromFile("E:\\Resimler\\" + _product.ProductFrontImageSaveTo);
+            //Bitmap bmp = new Bitmap("E:\\Resimler\\0a3ec557-22d0-40a9-8157-afc563daecdd.jpg");
+            //pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            //pictureBox1.Image = im;
 
             ProductDal productDal = new ProductDal();
             List<ProductContent> blackListContent = new List<ProductContent>();

@@ -65,9 +65,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(96, 108);
+            this.pictureBox1.Location = new System.Drawing.Point(48, 108);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(160, 185);
+            this.pictureBox1.Size = new System.Drawing.Size(154, 114);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -321,7 +321,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(461, 321);
+            this.label22.Location = new System.Drawing.Point(477, 321);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(109, 13);
             this.label22.TabIndex = 27;
@@ -330,7 +330,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(402, 321);
+            this.label23.Location = new System.Drawing.Point(386, 321);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(22, 13);
             this.label23.TabIndex = 28;

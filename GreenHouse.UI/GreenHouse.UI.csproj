@@ -68,6 +68,12 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminProductVerification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminProductVerification.Designer.cs">
+      <DependentUpon>AdminProductVerification.cs</DependentUpon>
+    </Compile>
     <Compile Include="BlackList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,11 +110,29 @@
     <Compile Include="FormAllergenList.Designer.cs">
       <DependentUpon>FormAllergenList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAllProductContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAllProductContent.Designer.cs">
+      <DependentUpon>FormAllProductContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormIncludeContentProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormIncludeContentProduct.Designer.cs">
+      <DependentUpon>FormIncludeContentProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSearchHistory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormSearchHistory.Designer.cs">
       <DependentUpon>FormSearchHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUserUpdateProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUserUpdateProfile.Designer.cs">
+      <DependentUpon>FormUserUpdateProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="ForumAllergenAdd.cs">
       <SubType>Form</SubType>
@@ -172,6 +196,9 @@
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminProductVerification.resx">
+      <DependentUpon>AdminProductVerification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BlackList.resx">
       <DependentUpon>BlackList.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,8 +217,17 @@
     <EmbeddedResource Include="FormAllergenList.resx">
       <DependentUpon>FormAllergenList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAllProductContent.resx">
+      <DependentUpon>FormAllProductContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormIncludeContentProduct.resx">
+      <DependentUpon>FormIncludeContentProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSearchHistory.resx">
       <DependentUpon>FormSearchHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUserUpdateProfile.resx">
+      <DependentUpon>FormUserUpdateProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForumAllergenAdd.resx">
       <DependentUpon>ForumAllergenAdd.cs</DependentUpon>
@@ -255,6 +291,7 @@
     <Content Include="Resource\exit.png" />
     <Content Include="Resource\facebook.png" />
     <Content Include="Resource\favorite.png" />
+    <Content Include="Resource\graph.png" />
     <Content Include="Resource\home.png" />
     <Content Include="Resource\info.png" />
     <Content Include="Resource\instagram.png" />

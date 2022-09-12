@@ -35,6 +35,7 @@
             this.btnArama = new System.Windows.Forms.Button();
             this.btnAddProductOrUpdate = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSideMenu
@@ -69,6 +70,7 @@
             this.btnBarkodOku.TabIndex = 2;
             this.btnBarkodOku.Text = "Barkod Okuma";
             this.btnBarkodOku.UseVisualStyleBackColor = true;
+            this.btnBarkodOku.Click += new System.EventHandler(this.btnBarkodOku_Click);
             // 
             // btnArama
             // 
@@ -106,12 +108,25 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(429, 509);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(331, 75);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Raporlar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1197, 629);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnAddProductOrUpdate);
             this.Controls.Add(this.btnArama);
@@ -132,5 +147,6 @@
         private System.Windows.Forms.Button btnArama;
         private System.Windows.Forms.Button btnAddProductOrUpdate;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button1;
     }
 }

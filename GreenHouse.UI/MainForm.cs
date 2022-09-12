@@ -64,5 +64,17 @@ namespace GreenHouse.UI
             FormSearchHistory searchHistory = new FormSearchHistory(_user);
             searchHistory.Show();
         }
+
+        private void btnBarkodOku_Click(object sender, EventArgs e)
+        {
+            FormAllProductContent formAllProductContent = new FormAllProductContent();
+            formAllProductContent.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormIncludeContentProduct formIncludeContentProduct = new FormIncludeContentProduct();
+            formIncludeContentProduct.Show();
+        }
     }
 }

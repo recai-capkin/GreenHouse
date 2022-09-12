@@ -23,7 +23,7 @@ namespace GreenHouse.UI
         public int? updateCategoryId;
         public int productId;
         bool UpdateStatus = false;
-        
+
         string dir;
         public AddProduct()
         {
@@ -60,7 +60,7 @@ namespace GreenHouse.UI
             ProductContentPicture = SavePicture();
             //btnAddProductImageContent.BackgroundImage = Image.FromFile("E:\\Resimler\\" + ProductContentPicture);
             label11.Visible = true;
-            
+
 
         }
         public string SavePicture()
@@ -119,18 +119,33 @@ namespace GreenHouse.UI
                     content = textBox5.Text.Split(ayrac);
                     tehlikeSeviyesi = textBox6.Text.Split(ayrac);
                     List<ProductContent> contentList = new List<ProductContent>();
+                    if (content.Length == tehlikeSeviyesi.Length)
+                    {
+                        
+                    
                     for (int i = 0; i < content.Length; i++)
                     {
-                        ProductContent productContent = new ProductContent()
+                        
+                        if (!String.IsNullOrEmpty(content[i])
+                            && !String.IsNullOrEmpty(tehlikeSeviyesi[i]))
                         {
-                            ContentName = content[i],
-                            ContentThreadLevel = tehlikeSeviyesi[i],
-                            ProductId = productId
-                        };
-                        contentList.Add(productContent);
+                            ProductContent productContent = new ProductContent()
+                            {
+                                ContentName = content[i],
+                                ContentThreadLevel = tehlikeSeviyesi[i],
+                                ProductId = productId
+                            };
+                            contentList.Add(productContent);
+                        }
+                        
                     }
                     string uretici = comboBox2.Text;
-                    productDal.AddProduct(newProduct, topkategori, subkategori, marka, contentList,uretici,_user.UserId);
+                    productDal.AddProduct(newProduct, topkategori, subkategori, marka, contentList, uretici, _user.UserId);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lütfen yazdığınız içeriğin ve tehlike seviye sayısı ile aynı olduğuna dikkat edin!");
+                    }
                 }
                 else
                 {
@@ -162,13 +177,21 @@ namespace GreenHouse.UI
                         List<ProductContent> contentList = new List<ProductContent>();
                         for (int i = 0; i < content.Length; i++)
                         {
-                            ProductContent productContent = new ProductContent()
+                            var data = String.IsNullOrEmpty(content[i]);
+                            var data2 = String.IsNullOrEmpty(tehlikeSeviyesi[i]);
+                            if (!String.IsNullOrEmpty(content[i])
+                                && !String.IsNullOrEmpty(tehlikeSeviyesi[i])
+                                && content.Length == tehlikeSeviyesi.Length)
                             {
-                                ContentName = content[i],
-                                ContentThreadLevel = tehlikeSeviyesi[i],
-                                ProductId = productId
-                            };
-                            contentList.Add(productContent);
+                                ProductContent productContent = new ProductContent()
+                                {
+                                    ContentName = content[i],
+                                    ContentThreadLevel = tehlikeSeviyesi[i],
+                                    ProductId = productId
+                                };
+                                contentList.Add(productContent);
+                            }
+
                         }
                         ProductBrand productBrand = new ProductBrand()
                         {
@@ -221,7 +244,7 @@ namespace GreenHouse.UI
 
                         }
                     }
-                  
+
                 }
 
 
@@ -255,6 +278,49 @@ namespace GreenHouse.UI
             label11.Visible = false;
             label12.Visible = false;
             label13.Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string Value = "Riskli,";
+            textBox6.Text += Value;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            string Value = "Orta Riskli,";
+            textBox6.Text += Value;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string Value = "Az Riskli,";
+            textBox6.Text += Value;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string Value = "Temiz,";
+            textBox6.Text += Value;
+        }
+        void CleanPage()
+        {
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox5.Clear();
+            textBox6.Clear();
+            comboBox1.SelectedItem = null;
+            comboBox2.SelectedItem = null;
+            comboBox3.SelectedItem = null;
+            label11.Visible = false;
+            label12.Visible = false;
+            label13.Visible = false;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            CleanPage();
         }
     }
 }

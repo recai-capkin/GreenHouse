@@ -24,5 +24,11 @@ namespace GreenHouse.UI
             _user = user;
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AdminProductVerification adminProductVerification = new AdminProductVerification(_user);
+            adminProductVerification.Show();
+        }
     }
 }
