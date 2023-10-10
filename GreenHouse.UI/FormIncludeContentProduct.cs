@@ -29,7 +29,7 @@ namespace GreenHouse.UI
             GetUserProductCount();
             GetMostFavoritesProduct();
             GetMostProductAddedUserCount();
-
+            GetProductContentCount();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,6 +60,13 @@ namespace GreenHouse.UI
             ProductDal product = new ProductDal();
             var data = product.ProductAddUserCounts();
             dataGridView5.DataSource = data;
+        }
+
+        void GetProductContentCount()
+        {
+            ProductDal product = new ProductDal();
+            var data = product.GetProductContentCounts();
+            dataGridView6.DataSource = data;
         }
     }
 }

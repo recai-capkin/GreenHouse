@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenHouse.Dto", "GreenHous
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GreenHouseSetup", "GreenHouseSetup\GreenHouseSetup.vdproj", "{5C5C5497-0E3A-4023-B02B-7166ADDCA92B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenHouse.Validation", "GreenHouse.Validation\GreenHouse.Validation.csproj", "{FDFE1A2F-02B9-4668-A29D-BE79AAE04D33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{251FCDF3-E2C6-432D-92DA-64B1E08835D3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5C5C5497-0E3A-4023-B02B-7166ADDCA92B}.Debug|Any CPU.ActiveCfg = Debug
 		{5C5C5497-0E3A-4023-B02B-7166ADDCA92B}.Release|Any CPU.ActiveCfg = Release
+		{FDFE1A2F-02B9-4668-A29D-BE79AAE04D33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDFE1A2F-02B9-4668-A29D-BE79AAE04D33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDFE1A2F-02B9-4668-A29D-BE79AAE04D33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDFE1A2F-02B9-4668-A29D-BE79AAE04D33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

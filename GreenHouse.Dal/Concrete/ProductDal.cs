@@ -814,6 +814,30 @@ namespace GreenHouse.Dal.Concrete
             }
             return data;
         }
+
+        public List<ProductContentCount> GetProductContentCounts()
+        {
+            var data = new List<ProductContentCount>();
+            using (GreenHouseContext greenHouseContext = new GreenHouseContext())
+            {
+                data = greenHouseContext.Products
+                    .Join(
+                    greenHouseContext.ProductContents,
+                    x => x.ProductId,
+                    x => x.ProductId,
+                    (x,y) => new ProductContentCount
+                    {
+                        ProductName = x.ProductName,
+                        ProductContent = y.ProductId
+                    }
+                    ).GroupBy(x => x.ProductName).Select(x => new ProductContentCount
+                    {
+                        ProductName = x.Key,
+                        ProductContent = x.Count()
+                    }).ToList();
+            }
+            return data;
+        }
     }
 }
 
